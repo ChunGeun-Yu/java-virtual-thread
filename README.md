@@ -107,6 +107,9 @@ spring:
 
 # reference
 https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html
+
 https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.2-Release-Notes#support-for-virtual-threads
+
 https://d2.naver.com/helloworld/1203723
+
 https://techblog.woowahan.com/15398/
