@@ -6,9 +6,12 @@ spring:
     virtual:
       enabled: true
   task:
-    execution:
-      thread-name-prefix: myTask-
     scheduling:
-      thread-name-prefix: myScheduler-
-  main:
-    keep-alive: true
+      thread-name-prefix: mySch-
+#  task:
+#    execution:
+#      thread-name-prefix: myTask-
+#    scheduling:
+#      thread-name-prefix: myScheduler-
+#  main:
+#    keep-alive: true

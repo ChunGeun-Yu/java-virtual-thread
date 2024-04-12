@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ThreadFactory;
 @Slf4j
 public class VirtualThreadExecutorsCreation {
@@ -25,9 +26,16 @@ public class VirtualThreadExecutorsCreation {
     public static void main(String[] args) throws InterruptedException {
         log.info("1) main. thread: " + Thread.currentThread());
 
-        taskExecutor1();
-        taskExecutor2();
-//        antiPattern1();
+        ThreadFactory factory = Thread.ofVirtual().name("myVirtual-", 0).factory();
+        try (ExecutorService executorService = Executors.newThreadPerTaskExecutor(factory)) {
+            for (int i = 0; i < 100; i++) {
+                executorService.submit(runnable);
+            }
+        }
+
+//        taskExecutor1();
+//        taskExecutor2();
+        antiPattern1();
 //        antiPattern2();
 
 

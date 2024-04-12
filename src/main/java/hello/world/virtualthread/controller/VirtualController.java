@@ -21,12 +21,13 @@ public class VirtualController {
     public void sleep() throws InterruptedException {
         log.info("1) counter: {}, thread: {}", counter.incrementAndGet(), Thread.currentThread());
         Thread.sleep(5000);
-        log.info("2) counter");
+        log.info("2) thread: {}", Thread.currentThread());
     }
 
     @GetMapping("/async")
     public void async() {
-        log.info("async. thread: {}", Thread.currentThread());
+        log.info("1) async. thread: {}", Thread.currentThread());
         virtualService.async();
+        log.info("2) async. thread: {}", Thread.currentThread());
     }
 }

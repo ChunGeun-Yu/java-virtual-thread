@@ -38,8 +38,8 @@ public class PerformanceTest {
         long startTime = System.currentTimeMillis();
         log.info("1) main. thread: " + Thread.currentThread());
 
-//        virtualThreadWithIoBound();
 //        platformThreadWithIoBound();
+//        virtualThreadWithIoBound();
 
 //        platformThreadWithCpuBound();
 //        virtualThreadWithCpuBound();

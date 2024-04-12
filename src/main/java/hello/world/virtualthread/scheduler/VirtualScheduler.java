@@ -13,4 +13,9 @@ public class VirtualScheduler {
     public void fixedRate() {
         log.info("fixedRate. thread: {}", Thread.currentThread());
     }
+
+    @Scheduled(fixedRate = 5000, scheduler = "threadPoolTaskScheduler")
+    public void fixedRate2() {
+        log.info("fixedRate2. thread: {}", Thread.currentThread());
+    }
 }

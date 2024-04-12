@@ -15,11 +15,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 @Slf4j
 public class SchedulerConfig {
 
-    @Primary
-    @Bean
-    public SimpleAsyncTaskScheduler simpleAsyncTaskScheduler(SimpleAsyncTaskSchedulerBuilder builder) {
-        return builder.build();
-    }
 
     @Bean
     public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
@@ -28,6 +23,12 @@ public class SchedulerConfig {
         threadPoolTaskScheduler.setPoolSize(10);
         // TODO: more settings...
         return threadPoolTaskScheduler;
+    }
+
+    @Primary
+    @Bean
+    public SimpleAsyncTaskScheduler simpleAsyncTaskScheduler(SimpleAsyncTaskSchedulerBuilder builder) {
+        return builder.build();
     }
 
 }

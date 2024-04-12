@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class VirtualService {
 
-    @Async
+    @Async("threadPoolTaskExecutor")
     public void async() {
         log.info("1) async. thread: {}", Thread.currentThread());
         try {

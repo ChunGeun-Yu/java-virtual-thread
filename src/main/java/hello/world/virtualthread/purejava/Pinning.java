@@ -5,23 +5,28 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Slf4j
 public class Pinning {
+
+    private final ReentrantLock lock = new ReentrantLock();
 
     // -Djdk.tracePinnedThreads=full  or -Djdk.tracePinnedThreads=short 를 통해  detect
     private final Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            log.info("1) run. thread: " + Thread.currentThread());
+
             synchronized (this) {
+            log.info("1) run. thread: " + Thread.currentThread());
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            }
             log.info("2) run. thread: " + Thread.currentThread());
+            }
+
         }
     };
 

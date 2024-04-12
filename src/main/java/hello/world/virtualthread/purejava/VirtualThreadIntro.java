@@ -29,17 +29,17 @@ public class VirtualThreadIntro {
         long startTime = System.currentTimeMillis();
         log.info("1) main. thread: " + Thread.currentThread());
 
-//        try (ExecutorService executorService = Executors.newFixedThreadPool(10_000)) {
-//            IntStream.range(0, 10_000).forEach(value -> {
-//                executorService.submit(runnable);
-//            });
-//        }
-
-        try (ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor()) {
+        try (ExecutorService executorService = Executors.newFixedThreadPool(10_000)) {
             IntStream.range(0, 10_000).forEach(value -> {
                 executorService.submit(runnable);
             });
         }
+
+//        try (ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor()) {
+//            IntStream.range(0, 10_000).forEach(value -> {
+//                executorService.submit(runnable);
+//            });
+//        }
 
 
         log.info("2) main. time: " + (System.currentTimeMillis()-startTime) + ". thread: " + Thread.currentThread());
